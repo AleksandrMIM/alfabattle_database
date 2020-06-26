@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  postgreSQL:
+    container_name: postgreSQL
+    image: postgres
+    env_file:
+      - database.env
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+  alfabattle-database:
+    container_name: alfabattle-database
+    depends_on:
+      - postgreSQL
+    image: aminetor/alfabattle_database:1.0-SNAPSHOT
+    ports:
+      - 9098:9098
+
+volumes:
+  database-data:

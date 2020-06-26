@@ -1,0 +1,28 @@
+server:
+  port: 9098
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      write_dates_as_timestamps: false
+  datasource:
+    url: jdbc:postgresql://postgreSQL:5432/postgres
+    username: postgres
+    password: password
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 8
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          fetch_size: 16
+        max_fetch_depth: 0
+        default_batch_fetch_size: 16
